@@ -10,7 +10,7 @@ describe('BookService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        StoreModule.forRoot({ books: bookReducer }), // Provide the StoreModule
+        StoreModule.forRoot({ books: bookReducer }),
       ],
       providers: [BookService],
     });

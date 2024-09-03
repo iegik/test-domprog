@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { Book } from '../models/book';
 import { addBook, editBook, removeBook } from '../book/book.actions';
 import { BookShelf } from '../models/book-shelf';
@@ -13,7 +14,7 @@ export class BookService {
   constructor(private store: Store<BookShelf>) {}
 
   loadBooks() {
-    const books = JSON.parse(localStorage.getItem(this.storageKey) || '') || [];
+    const books = JSON.parse(localStorage.getItem(this.storageKey) || '[]') || [];
     books.forEach((book: Book) => this.store.dispatch(addBook({ book })));
   }
 

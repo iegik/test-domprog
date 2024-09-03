@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 import { v4 as uuidv4 } from 'uuid';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-book-form',
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
 export class BookFormComponent implements OnInit {
   @Input() book: Book = { id: '', author: '', title: '', year: null, pages: null };
   isEditMode = false;
+  isSaved = false;
 
   constructor(private bookService: BookService) {}
 
@@ -28,11 +30,13 @@ export class BookFormComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.isSaved) return;
     if (this.isEditMode) {
       this.bookService.editBook(this.book);
     } else {
-      this.book.id = uuidv4();
-      this.bookService.addBook(this.book);
+      const id = uuidv4()
+      this.bookService.addBook({ ...this.book, id });
+      this.isSaved = true;
     }
   }
 }

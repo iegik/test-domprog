@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
 import { BookFilterPipe } from '../../pipes/book-filter.pipe';
+import { BookFormComponent } from '../book-form/book-form.component';
 
 @Component({
   selector: 'app-book-shelf',
@@ -14,7 +15,8 @@ import { BookFilterPipe } from '../../pipes/book-filter.pipe';
   imports: [
     CommonModule,
     BookFilterPipe,
-    FormsModule
+    FormsModule,
+    BookFormComponent,
   ],
   templateUrl: './book-shelf.component.html',
   styleUrl: './book-shelf.component.css'
@@ -29,7 +31,6 @@ export class BookShelfComponent {
 
   ngOnInit() {
     this.bookService.loadBooks();
-    console.log(this.books$)
   }
 
   editBook(id: string) {

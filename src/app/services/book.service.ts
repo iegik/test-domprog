@@ -38,8 +38,9 @@ export class BookService {
   }
 
   private updateLocalStorage() {
-    this.store.select((store) => {
-      this.saveBooks(store.books);
+    this.store.select('books').subscribe((books) => {
+      if (!books) return;
+      this.saveBooks(books);
     });
   }
 }

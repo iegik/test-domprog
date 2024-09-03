@@ -7,5 +7,10 @@
     <button (click)="removeBook(book.id)">Remove</button>
   </li>
 </ul>
-<button>Add</button>
-<button>Remove</button>
+
+<button popovertarget="book">Add</button>
+
+<div id="book" popover="manual">
+  <button popovertarget="book">close</button>
+  <app-book-form></app-book-form>
+</div>

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book';
 import { ActivatedRoute } from '@angular/router';
+import { TuiButton, TuiTextfield } from '@taiga-ui/core';
 
 const emptyBookFormValue = {
   title: '',
@@ -20,6 +21,8 @@ const emptyBookFormValue = {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TuiTextfield,
+    TuiButton,
   ],
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.less'],

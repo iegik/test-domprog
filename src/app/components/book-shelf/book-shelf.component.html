@@ -38,7 +38,22 @@
   </ul>
 
   <dialog id="book" class="book-shelf__popover">
-    <button tuiButtonClose tuiIconButton size="s" appearance="glass" onclick="book[book.open ? 'close' : 'showModal']()">Close</button>
+    <div tuiBlock>
+      <div tuiGroup class="group group--header">
+        <div class="group__item">
+          <h3>
+            Add / Edit book
+          </h3>
+        </div>
+        <div class="group__item">
+        </div>
+        <div class="group__item">
+        </div>
+        <div class="group__item">
+          <button tuiButtonClose tuiIconButton size="s" appearance="glass" onclick="book[book.open ? 'close' : 'showModal']()">Close</button>
+        </div>
+      </div>
+    </div>
     <app-book-form [bookId]="selectedBookId"></app-book-form>
   </dialog>
 </div>

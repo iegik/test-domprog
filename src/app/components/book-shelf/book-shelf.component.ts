@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -26,8 +26,9 @@ import { AppState } from '../../app.config';
 export class BookShelfComponent {
   books$: Observable<Book[]>;
   searchTerm: string = '';
+  selectedBookId?: string;
 
-  constructor(private store: Store<AppState>, private bookService: BookService) {
+  constructor(private store: Store<AppState>, private bookService: BookService, private cdr: ChangeDetectorRef) {
     this.books$ = this.store.select(selectAllBooks);
   }
 
@@ -36,7 +37,15 @@ export class BookShelfComponent {
   }
 
   editBook(id: string) {
-    // Implement the navigation to the edit page or show the edit form
+    setTimeout(() => {
+      this.selectedBookId = id;
+      this.cdr.detectChanges();
+    }, 0);
+  }
+
+  deselect() {
+    this.selectedBookId = undefined
+    this.cdr.detectChanges();
   }
 
   removeBook(id: string) {

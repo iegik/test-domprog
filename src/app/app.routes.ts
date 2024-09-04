@@ -14,7 +14,13 @@ export const routes: Routes = [
   { path: 'components/book-form',
     component: BookFormComponent
   },
+  { path: 'components/book-form/:id',
+    component: BookFormComponent
+  },
   { path: 'components/book-profile',
+    component: BookProfileComponent
+  },
+  { path: 'components/book-profile/:id',
     component: BookProfileComponent
   },
   {

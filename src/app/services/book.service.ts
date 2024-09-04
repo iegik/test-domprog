@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Book } from '../models/book';
 import { addBook, editBook, removeBook } from '../book/book.actions';
 import { BookShelf } from '../models/book-shelf';
+import { selectAllBooks, selectBookById } from '../book/book.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +26,13 @@ export class BookService {
   }
 
   addBook(book: Book) {
-    this.store.dispatch(addBook({ book }));
+    const id = uuidv4()
+    this.store.dispatch(addBook({ book: { ...book, id: id } }));
     this.updateLocalStorage();
+  }
+
+  getBookById(id: string) {
+    return this.store.select(selectBookById(id));
   }
 
   editBook(book: Book) {
@@ -39,8 +46,9 @@ export class BookService {
   }
 
   private updateLocalStorage() {
-    this.store.select('books').subscribe((books) => {
+    this.store.select(selectAllBooks).subscribe((books) => {
       if (!books) return;
+
       this.saveBooks(books);
     });
   }

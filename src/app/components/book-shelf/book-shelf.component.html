@@ -3,14 +3,14 @@
 <ul>
   <li *ngFor="let book of (books$ | async) ?? [] | bookFilter: searchTerm">
     <span>{{ book.author }} - {{ book.title }}</span>
-    <button (click)="editBook(book.id)">Edit</button>
+    <button (click)="editBook(book.id)" popovertarget="book">Edit</button>
     <button (click)="removeBook(book.id)">Remove</button>
   </li>
 </ul>
 
-<button popovertarget="book">Add</button>
+<button (click)="deselect()" popovertarget="book">Add</button>
 
 <div id="book" popover="manual">
   <button popovertarget="book">close</button>
-  <app-book-form></app-book-form>
+  <app-book-form [bookId]="selectedBookId"></app-book-form>
 </div>

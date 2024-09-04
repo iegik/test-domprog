@@ -22,7 +22,7 @@ const emptyBookFormValue = {
     ReactiveFormsModule,
   ],
   templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.css'],
+  styleUrls: ['./book-form.component.less'],
 })
 export class BookFormComponent implements OnInit, OnChanges {
   @Input() bookId?: string;

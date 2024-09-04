@@ -11,5 +11,5 @@
   <label for="pages">Pages:</label>
   <input type="number" id="pages" formControlName="pages" />
 
-  <button type="submit">{{ bookId ? 'Update' : 'Add' }} Book</button>
+  <button tuiButton size="s" type="submit" onclick="book[book.open ? 'close' : 'showModal']()">{{ bookId ? 'Update' : 'Add' }} Book</button>
 </form>

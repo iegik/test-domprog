@@ -1,0 +1,88 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+[popover]::backdrop {
+  background-color: rgba(0,0,0,.2);
+}
+dialog::backdrop {
+  backdrop-filter: blur(10px);
+}
+
+.book-shelf {
+  &__list {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+  }
+
+  &__item {
+    flex: 1 1 calc(50% - 16px);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: space-between;
+
+    margin: 8px 0;
+    list-style: none;
+    display: flex;
+
+    @media (max-width: 768px) {
+      flex: 1 1 100%;
+    }
+  }
+
+  &__popover {
+    position: relative;
+    background: white;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    &__close-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.tiles {
+  gap: 1rem;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.tile:before {
+  content: 'Drop here';
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--tui-border-normal);
+  border-radius: var(--tui-radius-l);
+  border: 2px dashed var(--tui-border-normal);
+}
+
+.content {
+  .transition(box-shadow);
+  height: 100%;
+  padding: 1rem;
+  background: var(--tui-background-base);
+  box-sizing: border-box;
+  border-radius: var(--tui-radius-l);
+  border: 1px solid var(--tui-border-normal);
+  overflow: hidden;
+
+  tui-tile._dragged & {
+      box-shadow: var(--tui-shadow-small-hover);
+  }
+}

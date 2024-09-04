@@ -1,16 +1,19 @@
 <h2>Book Shelf</h2>
 <input type="text" [(ngModel)]="searchTerm" placeholder="Search Books" />
-<button (click)="deselect()" popovertarget="book">Add a book</button>
+<button (click)="deselect()" onclick="book[book.open ? 'close' : 'showModal']()">Add a book</button>
 
-<ul>
-  <li *ngFor="let book of (books$ | async) ?? [] | bookFilter: searchTerm">
-    <span>{{ book.author }} - {{ book.title }}</span>
-    <button (click)="editBook(book.id)" popovertarget="book">Edit</button>
-    <button (click)="removeBook(book.id)">Remove</button>
+<ul class="book-shelf__list">
+  <li tuiBlock *ngFor="let book of (books$ | async) ?? [] | bookFilter: searchTerm" class="book-shelf__item">
+    <div class="content">
+      <h2 tuiTitle class="title">{{ book.author }}</h2>
+      <p tuiSubtitle>{{ book.title }}</p>
+      <button tuiButton appearance="outline" size="s" (click)="editBook(book.id)" onclick="book[book.open ? 'close' : 'showModal']()">Edit</button>
+      <button tuiButton appearance="outline" size="s" (click)="removeBook(book.id)">Remove</button>
+    </div>
   </li>
 </ul>
 
-<div id="book" popover="manual">
-  <button popovertarget="book">close</button>
+<dialog id="book" class="book-shelf__popover">
+  <button tuiButtonClose tuiIconButton size="s" appearance="glass" onclick="book[book.open ? 'close' : 'showModal']()">Close</button>
   <app-book-form [bookId]="selectedBookId"></app-book-form>
-</div>
+</dialog>

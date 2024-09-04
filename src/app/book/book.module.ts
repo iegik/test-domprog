@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TuiDialog, TuiIcon, TuiButton, TuiNotification } from '@taiga-ui/core';
 
 import { BookFormComponent } from '../components/book-form/book-form.component';
 import { BookShelfComponent } from '../components/book-shelf/book-shelf.component';
@@ -19,7 +20,11 @@ import { BookProfileComponent } from '../components/book-profile/book-profile.co
     ReactiveFormsModule,
     BookFormComponent,
     BookProfileComponent,
-    BookShelfComponent
+    BookShelfComponent,
+    TuiDialog,
+    TuiNotification,
+    TuiButton,
+    TuiIcon
   ],
 })
 export class BookModule { }

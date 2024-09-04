@@ -1,7 +1,9 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { TuiButton, TuiIcon } from '@taiga-ui/core';
+import { TuiBlock, TuiButtonClose } from '@taiga-ui/kit';
 import { Observable } from 'rxjs';
 
 import { Book } from '../../models/book';
@@ -19,9 +21,14 @@ import { AppState } from '../../app.config';
     BookFilterPipe,
     FormsModule,
     BookFormComponent,
+    TuiButton,
+    TuiButtonClose,
+    TuiBlock,
+    TuiIcon
   ],
   templateUrl: './book-shelf.component.html',
-  styleUrl: './book-shelf.component.css'
+  styleUrl: './book-shelf.component.less',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookShelfComponent {
   books$: Observable<Book[]>;

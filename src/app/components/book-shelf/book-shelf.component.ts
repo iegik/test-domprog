@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { TuiButton, TuiIcon } from '@taiga-ui/core';
+import { TuiButton, TuiGroup, TuiIcon, TuiTextfield } from '@taiga-ui/core';
 import { TuiBlock, TuiButtonClose } from '@taiga-ui/kit';
 import { Observable } from 'rxjs';
+import { TuiCardLarge, TuiCell } from '@taiga-ui/layout';
 
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
@@ -24,7 +25,11 @@ import { AppState } from '../../app.config';
     TuiButton,
     TuiButtonClose,
     TuiBlock,
-    TuiIcon
+    TuiIcon,
+    TuiGroup,
+    TuiTextfield,
+    TuiCell,
+    TuiCardLarge
   ],
   templateUrl: './book-shelf.component.html',
   styleUrl: './book-shelf.component.less',

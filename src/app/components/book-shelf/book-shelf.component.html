@@ -1,19 +1,44 @@
-<h2>Book Shelf</h2>
-<input type="text" [(ngModel)]="searchTerm" placeholder="Search Books" />
-<button (click)="deselect()" onclick="book[book.open ? 'close' : 'showModal']()">Add a book</button>
-
-<ul class="book-shelf__list">
-  <li tuiBlock *ngFor="let book of (books$ | async) ?? [] | bookFilter: searchTerm" class="book-shelf__item">
-    <div class="content">
-      <h2 tuiTitle class="title">{{ book.author }}</h2>
-      <p tuiSubtitle>{{ book.title }}</p>
-      <button tuiButton appearance="outline" size="s" (click)="editBook(book.id)" onclick="book[book.open ? 'close' : 'showModal']()">Edit</button>
-      <button tuiButton appearance="outline" size="s" (click)="removeBook(book.id)">Remove</button>
+<div tuiPlatform="web">
+  <div tuiBlock>
+    <div tuiGroup class="group group--header">
+      <div class="group__item">
+        <tui-icon icon="@tui.heart" [style.color]="'var(--tui-background-accent-1)'"></tui-icon>
+      </div>
+      <div class="group__item">
+        <h2>
+          Book Shelf
+        </h2>
+      </div>
+      <div class="group__item">
+        <tui-textfield iconStart="@tui.search" tuiTextfieldSize="m">
+          <label tuiLabel>Search Books</label>
+          <input type="text" [(ngModel)]="searchTerm" tuiTextfield />
+        </tui-textfield>
+      </div>
+      <div class="group__item">
+        <button tuiButton size="m" appearance="outline" (click)="deselect()" onclick="book[book.open ? 'close' : 'showModal']()">Add a book</button>
+      </div>
     </div>
-  </li>
-</ul>
+  </div>
 
-<dialog id="book" class="book-shelf__popover">
-  <button tuiButtonClose tuiIconButton size="s" appearance="glass" onclick="book[book.open ? 'close' : 'showModal']()">Close</button>
-  <app-book-form [bookId]="selectedBookId"></app-book-form>
-</dialog>
+  <ul class="book-shelf__list">
+    <li *ngFor="let book of (books$ | async) ?? [] | bookFilter: searchTerm" class="book-shelf__item">
+      <div tuiCardLarge tuiSurface="elevated" class="content">
+        <header tuiHeader>
+          <h2 tuiTitle class="title">{{ book.author }}</h2>
+          <p tuiSubtitle>{{ book.title }}</p>
+        </header>
+        <!-- <section></section> -->
+        <footer tuiGroup class="group">
+          <button tuiButton appearance="secondary" size="s" (click)="editBook(book.id)" onclick="book[book.open ? 'close' : 'showModal']()">Edit</button>
+          <button tuiButton appearance="destructive" size="s" (click)="removeBook(book.id)">Remove</button>
+        </footer>
+      </div>
+    </li>
+  </ul>
+
+  <dialog id="book" class="book-shelf__popover">
+    <button tuiButtonClose tuiIconButton size="s" appearance="glass" onclick="book[book.open ? 'close' : 'showModal']()">Close</button>
+    <app-book-form [bookId]="selectedBookId"></app-book-form>
+  </dialog>
+</div>

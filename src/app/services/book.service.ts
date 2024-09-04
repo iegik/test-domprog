@@ -14,6 +14,7 @@ export class BookService {
   constructor(private store: Store<BookShelf>) {}
 
   loadBooks() {
+    if (typeof localStorage === 'undefined') return;
     const books = JSON.parse(localStorage.getItem(this.storageKey) || '[]') || [];
     books.forEach((book: Book) => this.store.dispatch(addBook({ book })));
   }

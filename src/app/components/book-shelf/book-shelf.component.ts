@@ -8,6 +8,8 @@ import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
 import { BookFilterPipe } from '../../pipes/book-filter.pipe';
 import { BookFormComponent } from '../book-form/book-form.component';
+import { selectAllBooks } from '../../book/book.selectors';
+import { AppState } from '../../app.config';
 
 @Component({
   selector: 'app-book-shelf',
@@ -25,8 +27,8 @@ export class BookShelfComponent {
   books$: Observable<Book[]>;
   searchTerm: string = '';
 
-  constructor(private store: Store<{ books: Book[] }>, private bookService: BookService) {
-    this.books$ = store.select('books') || [];
+  constructor(private store: Store<AppState>, private bookService: BookService) {
+    this.books$ = this.store.select(selectAllBooks);
   }
 
   ngOnInit() {

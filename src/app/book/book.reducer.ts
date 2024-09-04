@@ -9,6 +9,8 @@ export interface State extends EntityState<Book> {
   selectedBookId: string | null;
 }
 
+export type BookState = State;
+
 export function selectBookId(a: Book): string {
   //In this case this would be optional since primary key is id
   return a.id;
@@ -42,7 +44,7 @@ const _bookReducer = createReducer(
   on(editBook, (state, { book }) => adapter.setOne(book, state))
 );
 
-export function bookReducer(state: State, action: Action<string>) {
+export function bookReducer(state: State | undefined, action: Action<string>) {
   return _bookReducer(state, action);
 }
 

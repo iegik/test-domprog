@@ -7,7 +7,7 @@ import { Book } from '../models/book';
 })
 export class BookFilterPipe implements PipeTransform {
 
-  transform(books: Book[], searchTerm: string): Book[] {
+  transform(books: Book[], searchTerm?: string): Book[] {
     if (!searchTerm) return books;
     return books.filter(
       (book) =>

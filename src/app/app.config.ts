@@ -6,6 +6,8 @@ import { provideStore } from '@ngrx/store';
 import { routes } from './app.routes';
 import * as appReducers from './store/reducers';
 
+export type AppState = typeof appReducers
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),

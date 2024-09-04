@@ -1,5 +1,7 @@
 <h2>Book Shelf</h2>
 <input type="text" [(ngModel)]="searchTerm" placeholder="Search Books" />
+<button (click)="deselect()" popovertarget="book">Add a book</button>
+
 <ul>
   <li *ngFor="let book of (books$ | async) ?? [] | bookFilter: searchTerm">
     <span>{{ book.author }} - {{ book.title }}</span>
@@ -7,8 +9,6 @@
     <button (click)="removeBook(book.id)">Remove</button>
   </li>
 </ul>
-
-<button (click)="deselect()" popovertarget="book">Add</button>
 
 <div id="book" popover="manual">
   <button popovertarget="book">close</button>

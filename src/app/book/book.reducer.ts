@@ -17,12 +17,26 @@ export function selectBookId(a: Book): string {
 }
 
 export function sortByName(a: Book, b: Book): number {
+  return a.title.localeCompare(b.title)
+}
+
+export function sortByAuthor(a: Book, b: Book): number {
+  return a.author.localeCompare(b.author);
+}
+
+export function sortByAuthorAndName(a: Book, b: Book): number {
+  const authorComparison = a.author.localeCompare(b.author);
+
+  if (authorComparison !== 0) {
+    return authorComparison;
+  }
+
   return a.title.localeCompare(b.title);
 }
 
 export const adapter: EntityAdapter<Book> = createEntityAdapter<Book>({
   selectId: selectBookId,
-  sortComparer: sortByName,
+  sortComparer: sortByAuthorAndName,
 });
 
 export const initialState: State = adapter.getInitialState({

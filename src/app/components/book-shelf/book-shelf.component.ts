@@ -61,6 +61,7 @@ export class BookShelfComponent {
   }
 
   removeBook(id: string) {
+    if (!confirm('Are you sure you want to delete this book?')) return;
     this.bookService.removeBook(id);
   }
 }

@@ -1,4 +1,6 @@
 <h2>Book Profile</h2>
-<div>
-  <app-book-form></app-book-form>
+<div ng-if="value">
+  <h3 tuiTitle>"{{value?.title}}"</h3>
+  <p><b tuiSubtitle>By {{value?.author}}</b></p>
+  <p>Written in {{value?.year}} and contain {{value?.pages}} page(s)</p>
 </div>

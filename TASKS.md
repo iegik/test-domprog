@@ -62,6 +62,18 @@ npm run build
 npm run serve:ssr:test-domprog
 ```
 
-```javascript
+Список книг взял отсюда, добавил произвольный id: https://github.com/benoitvallon/100-best-books/blob/master/books.json
 
-```
+Возможности:
+
+- фильтр книг по автору и названию в одном поле
+- добавление и редактирование книги
+- для просмотра работоспособности автономных компонентов - добавил для каждого компонента отдельный роут:
+  - [BookShelfComponent](http://localhost:4200/components/book-shelf)
+  - [BookFormComponent](http://localhost:4200/components/book-form)
+  - [BookFormComponent (:id)](http://localhost:4200/components/book-form/201594ad-1ec0-4169-8888-396676ad2a00)
+  - [BookProfileComponent](http://localhost:4200/components/book-profile)
+  - [BookProfileComponent (:id)](http://localhost:4200/components/book-profile/201594ad-1ec0-4169-8888-396676ad2a00)
+
+
+

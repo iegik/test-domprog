@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
 
+Project was created to test the knowledge of the candidate for the position of Frontend Developer at Domprog. For further information, please refer to the [TASKS](TASKS.md) file.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
